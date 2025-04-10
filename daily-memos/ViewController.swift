@@ -29,9 +29,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func requestMicrophonePermission() {
-        AVAudioSession.sharedInstance().requestRecordPermission { allowed in
-            if !allowed {
-                print("Akses mikrofon ditolak")
+        if #available(iOS 17.0, *) {
+            AVAudioApplication.requestRecordPermission { allowed in
+                DispatchQueue.main.async {
+                    if allowed {
+                        print("Microphone access granted (iOS 17+)")
+                    } else {
+                        print("Microphone access denied (iOS 17+)")
+                    }
+                }
+            }
+        } else {
+            AVAudioSession.sharedInstance().requestRecordPermission { allowed in
+                DispatchQueue.main.async {
+                    if allowed {
+                        print("Microphone access granted (iOS <17)")
+                    } else {
+                        print("Microphone access denied (iOS <17)")
+                    }
+                }
             }
         }
     }

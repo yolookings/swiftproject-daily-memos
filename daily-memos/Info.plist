@@ -2,11 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NivarelleMedium-pgBp1.ttf</string>
+	</array>
 	<key>NSMicrophoneUsageDescription</key>
-<string>App membutuhkan akses mikrofon untuk merekam suara harian Anda.</string>
-
+	<string>App membutuhkan akses mikrofon untuk merekam suara harian Anda.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
+		<key>UIApplicationSupportsTabbedSceneCollection</key>
+		<false/>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 		<key>UISceneConfigurations</key>
