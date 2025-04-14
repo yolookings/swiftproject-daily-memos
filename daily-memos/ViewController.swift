@@ -26,6 +26,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         recordButton.backgroundColor = .systemBlue
         recordButton.setTitle("Mulai Rekam", for: .normal)
         recordButton.setTitleColor(.white, for: .normal)
+        recordButton.accessibilityLabel = "Tombol Rekam"
+        recordButton.accessibilityHint = "Ketuk untuk memulai atau menghentikan rekaman"
     }
 
     func requestMicrophonePermission() {
@@ -133,9 +135,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if isRecording {
             recordButton.setTitle("Stop Rekaman", for: .normal)
             recordButton.backgroundColor = .systemRed
+            recordButton.accessibilityLabel = "Tombol Stop"
+            recordButton.accessibilityHint = "Ketuk untuk menghentikan rekaman"
         } else {
             recordButton.setTitle("Mulai Rekam", for: .normal)
             recordButton.backgroundColor = .systemBlue
+            recordButton.accessibilityLabel = "Tombol Rekam"
+            recordButton.accessibilityHint = "Ketuk untuk memulai rekaman"
         }
     }
 

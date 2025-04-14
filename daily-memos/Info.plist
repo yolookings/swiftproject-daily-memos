@@ -7,7 +7,7 @@
 		<string>NivarelleMedium-pgBp1.ttf</string>
 	</array>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>App membutuhkan akses mikrofon untuk merekam suara harian Anda.</string>
+	<string>Daily Memos membutuhkan akses mikrofon untuk merekam suara harian Anda dan membantu Anda melacak refleksi harian.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsTabbedSceneCollection</key>
