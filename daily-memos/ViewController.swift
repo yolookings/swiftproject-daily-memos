@@ -1,42 +1,48 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController {
 
+    // MARK: - Outlets
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var lastRecordingButton: UIButton!
+    @IBOutlet weak var waveformImageView: UIImageView!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var endButton: UIButton!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var enterTitleLabel: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var homeButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var profileButton: UIButton!
+
+    // MARK: - Audio Properties
     var audioRecorder: AVAudioRecorder?
     var audioPlayer: AVAudioPlayer?
-    var recordings: [URL] = []
-
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var recordButton: UIButton!
-
+    var lastRecordingURL: URL?
     var isRecording = false
+    var isPlaying = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         requestMicrophonePermission()
-        loadRecordings()
+        loadLastRecording()
     }
 
     func setupUI() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        recordButton.layer.cornerRadius = 12
-        recordButton.backgroundColor = .systemBlue
-        recordButton.setTitle("Mulai Rekam", for: .normal)
-        recordButton.setTitleColor(.white, for: .normal)
-        recordButton.accessibilityLabel = "Tombol Rekam"
-        recordButton.accessibilityHint = "Ketuk untuk memulai atau menghentikan rekaman"
+        // Styling sudah diatur di storyboard
+        enterTitleLabel.text = "Enter Title"
+        titleTextField.placeholder = "Type your title journey"
+        waveformImageView.image = UIImage(named: "waveform-placeholder")
     }
 
     func requestMicrophonePermission() {
         if #available(iOS 17.0, *) {
             AVAudioApplication.requestRecordPermission { allowed in
                 DispatchQueue.main.async {
-                    if allowed {
-                        print("Microphone access granted (iOS 17+)")
-                    } else {
+                    if !allowed {
                         self.showAlert(title: "Izin Ditolak", message: "Aplikasi memerlukan akses mikrofon untuk merekam.")
                     }
                 }
@@ -44,9 +50,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         } else {
             AVAudioSession.sharedInstance().requestRecordPermission { allowed in
                 DispatchQueue.main.async {
-                    if allowed {
-                        print("Microphone access granted (iOS <17)")
-                    } else {
+                    if !allowed {
                         self.showAlert(title: "Izin Ditolak", message: "Aplikasi memerlukan akses mikrofon untuk merekam.")
                     }
                 }
@@ -65,27 +69,56 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return getDocumentsDirectory().appendingPathComponent(filename)
     }
 
-    func loadRecordings() {
+    func loadLastRecording() {
         do {
             let files = try FileManager.default.contentsOfDirectory(at: getDocumentsDirectory(), includingPropertiesForKeys: nil)
-            recordings = files.filter { $0.pathExtension == "m4a" }.sorted { $0.lastPathComponent > $1.lastPathComponent }
-            tableView.reloadData()
+            let recordings = files.filter { $0.pathExtension == "m4a" }.sorted { $0.lastPathComponent > $1.lastPathComponent }
+            lastRecordingURL = recordings.first
         } catch {
             print("Gagal memuat rekaman: \(error.localizedDescription)")
         }
     }
 
-    @IBAction func recordButtonTapped(_ sender: UIButton) {
-        if isRecording {
-            finishRecording(success: true)
-        } else {
-            startRecording()
+    // MARK: - Actions
+    @IBAction func lastRecordingButtonTapped(_ sender: UIButton) {
+        guard let url = lastRecordingURL else { return }
+        playRecording(url: url)
+    }
+
+    @IBAction func playButtonTapped(_ sender: UIButton) {
+        guard let url = lastRecordingURL else { return }
+        playRecording(url: url)
+    }
+
+    @IBAction func pauseButtonTapped(_ sender: UIButton) {
+        if isPlaying {
+            audioPlayer?.pause()
+            isPlaying = false
         }
     }
 
-    func startRecording() {
-        stopPlaybackIfNeeded()
+    @IBAction func endButtonTapped(_ sender: UIButton) {
+        if isPlaying {
+            audioPlayer?.stop()
+            isPlaying = false
+        }
+        if isRecording {
+            finishRecording(success: true)
+        }
+    }
 
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        // Simpan judul dan file rekaman terakhir
+        guard let url = lastRecordingURL, let title = titleTextField.text, !title.isEmpty else {
+            showAlert(title: "Error", message: "Judul tidak boleh kosong.")
+            return
+        }
+        // Di sini bisa ditambahkan logika untuk menyimpan judul ke database/file
+        showAlert(title: "Berhasil", message: "Rekaman disimpan ke Library dengan judul: \(title)")
+    }
+
+    // MARK: - Audio Logic
+    func startRecording() {
         let audioFilename = generateFileName()
         let settings: [String: Any] = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -93,20 +126,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
-
         do {
             let session = AVAudioSession.sharedInstance()
             try session.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker])
             try session.setActive(true)
-
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder?.record()
-
             isRecording = true
-            updateRecordButtonUI(isRecording: true)
+            lastRecordingURL = audioFilename
         } catch {
             finishRecording(success: false)
-            print("Gagal memulai rekaman: \(error.localizedDescription)")
             showAlert(title: "Error", message: "Tidak dapat memulai rekaman.")
         }
     }
@@ -114,70 +143,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func finishRecording(success: Bool) {
         audioRecorder?.stop()
         audioRecorder = nil
-
         isRecording = false
-        updateRecordButtonUI(isRecording: false)
-
         if success {
-            loadRecordings()
+            loadLastRecording()
         } else {
             showAlert(title: "Rekaman Gagal", message: "Terjadi kesalahan saat merekam.")
         }
     }
 
-    func stopPlaybackIfNeeded() {
-        if audioPlayer?.isPlaying == true {
-            audioPlayer?.stop()
-        }
-    }
-
-    func updateRecordButtonUI(isRecording: Bool) {
-        if isRecording {
-            recordButton.setTitle("Stop Rekaman", for: .normal)
-            recordButton.backgroundColor = .systemRed
-            recordButton.accessibilityLabel = "Tombol Stop"
-            recordButton.accessibilityHint = "Ketuk untuk menghentikan rekaman"
-        } else {
-            recordButton.setTitle("Mulai Rekam", for: .normal)
-            recordButton.backgroundColor = .systemBlue
-            recordButton.accessibilityLabel = "Tombol Rekam"
-            recordButton.accessibilityHint = "Ketuk untuk memulai rekaman"
-        }
-    }
-
-    // MARK: - UITableView
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recordings.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecordingCell", for: indexPath)
-        let fileURL = recordings[indexPath.row]
-        cell.textLabel?.text = fileURL.lastPathComponent
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        playRecording(url: recordings[indexPath.row])
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
     func playRecording(url: URL) {
-        stopPlaybackIfNeeded()
-
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.prepareToPlay()
             audioPlayer?.play()
+            isPlaying = true
         } catch {
-            print("Gagal memutar rekaman: \(error.localizedDescription)")
             showAlert(title: "Playback Error", message: "Rekaman tidak dapat diputar.")
         }
     }
 
     // MARK: - Alert Helper
-
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Oke", style: .default))
