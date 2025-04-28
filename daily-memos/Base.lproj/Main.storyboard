@@ -1,129 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <color key="backgroundColor" red="0.07" green="0.15" blue="0.25" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <!-- Title -->
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Make Your Journey" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="1" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="titleLabel">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Make Your Journey" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="titleLabel">
+                                <rect key="frame" x="75.666666666666671" y="99" width="241.66666666666663" height="33.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
-                            <!-- Last Recording Button -->
-                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lastRecordingButton">
-                                <rect key="frame" x="0" y="0" width="200" height="48"/>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lastRecordingButton">
+                                <rect key="frame" x="96.666666666666686" y="164.66666666666666" width="200" height="48"/>
+                                <color key="backgroundColor" red="0.97999999999999998" green="0.81999999999999995" blue="0.35999999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Last Recording">
                                     <color key="titleColor" red="0.13" green="0.11" blue="0.13" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <color key="backgroundColor" red="0.98" green="0.82" blue="0.36" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius" value="16"/>
                             </button>
-                            <!-- Waveform Image -->
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="waveform-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="waveformImageView"/>
-                            <!-- Play, Pause, End Buttons -->
-                            <stackView axis="horizontal" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="buttonStack">
-                                <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="playButton">
-                                    <state key="normal" title="Play"/>
-                                    <color key="backgroundColor" red="0.98" green="0.82" blue="0.36" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius" value="12"/>
-                                </button>
-                                <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="pauseButton">
-                                    <state key="normal" title="Pause"/>
-                                    <color key="backgroundColor" red="0.98" green="0.82" blue="0.36" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius" value="12"/>
-                                </button>
-                                <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="endButton">
-                                    <state key="normal" title="End"/>
-                                    <color key="backgroundColor" red="0.98" green="0.82" blue="0.36" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius" value="12"/>
-                                </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" misplaced="YES" image="white-logo" translatesAutoresizingMaskIntoConstraints="NO" id="waveformImageView">
+                                <rect key="frame" x="71" y="268" width="250" height="120"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="home-icon" translatesAutoresizingMaskIntoConstraints="NO" id="t2h-XZ-Avf">
+                                <rect key="frame" x="31" y="762" width="105" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="search-icon" translatesAutoresizingMaskIntoConstraints="NO" id="ncR-OH-5Mu">
+                                <rect key="frame" x="144" y="762" width="105" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <stackView contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="buttonStack">
+                                <rect key="frame" x="66.666666666666686" y="388.66666666666669" width="260" height="48"/>
                             </stackView>
-                            <!-- Title TextField -->
-                            <textField borderStyle="roundedRect" placeholder="Type your title journey" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="titleTextField">
+                            <textField contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your title journey" translatesAutoresizingMaskIntoConstraints="NO" id="titleTextField">
+                                <rect key="frame" x="59" y="492" width="275" height="44"/>
+                                <color key="textColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" white="0.2" alpha="1" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label text="Enter Title" textAlignment="left" fontDescription="system 14" textColor="white" translatesAutoresizingMaskIntoConstraints="NO" id="enterTitleLabel"/>
-                            <!-- Save to Library Button -->
-                            <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="saveButton">
+                            <button contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saveButton">
+                                <rect key="frame" x="86.666666666666686" y="573" width="220" height="52"/>
+                                <color key="backgroundColor" red="0.13" green="0.67000000000000004" blue="0.44" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Save to Library">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <color key="backgroundColor" red="0.13" green="0.67" blue="0.44" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius" value="16"/>
                             </button>
-                            <!-- Bottom Navigation Bar -->
-                            <stackView axis="horizontal" distribution="fillEqually" alignment="center" spacing="0" translatesAutoresizingMaskIntoConstraints="NO" id="bottomNavBar">
-                                <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="homeButton">
-                                    <image key="normal" name="home-icon"/>
-                                </button>
-                                <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="searchButton">
-                                    <image key="normal" name="search-icon"/>
-                                </button>
-                                <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="profileButton">
-                                    <image key="normal" name="profile-icon"/>
-                                </button>
-                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="profile-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ak6-2l-wAY">
+                                <rect key="frame" x="256" y="762" width="105" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label contentMode="scaleToFill" misplaced="YES" text="Enter Title" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enterTitleLabel">
+                                <rect key="frame" x="158" y="463" width="77.333333333333314" height="20.333333333333314"/>
+                                <color key="backgroundColor" red="0.090196087960000004" green="0.14901961389999999" blue="0.24313727020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.070000000000000007" green="0.14999999999999999" blue="0.25" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <!-- Title -->
-                            <constraint firstItem="titleLabel" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="titleLabelTop"/>
-                            <constraint firstItem="titleLabel" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="titleLabelCenterX"/>
-                            <!-- Last Recording Button -->
-                            <constraint firstItem="lastRecordingButton" firstAttribute="top" secondItem="titleLabel" secondAttribute="bottom" constant="32" id="lastRecordingButtonTop"/>
-                            <constraint firstItem="lastRecordingButton" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lastRecordingButtonCenterX"/>
-                            <constraint firstItem="lastRecordingButton" firstAttribute="width" constant="200" id="lastRecordingButtonWidth"/>
-                            <constraint firstItem="lastRecordingButton" firstAttribute="height" constant="48" id="lastRecordingButtonHeight"/>
-                            <!-- Waveform Image -->
-                            <constraint firstItem="waveformImageView" firstAttribute="top" secondItem="lastRecordingButton" secondAttribute="bottom" constant="32" id="waveformTop"/>
-                            <constraint firstItem="waveformImageView" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="waveformCenterX"/>
-                            <constraint firstItem="waveformImageView" firstAttribute="width" constant="250" id="waveformWidth"/>
-                            <constraint firstItem="waveformImageView" firstAttribute="height" constant="120" id="waveformHeight"/>
-                            <!-- Play, Pause, End Buttons -->
-                            <constraint firstItem="buttonStack" firstAttribute="top" secondItem="waveformImageView" secondAttribute="bottom" constant="24" id="buttonStackTop"/>
                             <constraint firstItem="buttonStack" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="buttonStackCenterX"/>
-                            <constraint firstItem="buttonStack" firstAttribute="width" constant="260" id="buttonStackWidth"/>
                             <constraint firstItem="buttonStack" firstAttribute="height" constant="48" id="buttonStackHeight"/>
-                            <!-- Enter Title Label -->
-                            <constraint firstItem="enterTitleLabel" firstAttribute="top" secondItem="buttonStack" secondAttribute="bottom" constant="32" id="enterTitleLabelTop"/>
+                            <constraint firstItem="buttonStack" firstAttribute="top" secondItem="waveformImageView" secondAttribute="bottom" constant="24" id="buttonStackTop"/>
+                            <constraint firstItem="buttonStack" firstAttribute="width" constant="260" id="buttonStackWidth"/>
                             <constraint firstItem="enterTitleLabel" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="32" id="enterTitleLabelLeading"/>
-                            <!-- Title TextField -->
-                            <constraint firstItem="titleTextField" firstAttribute="top" secondItem="enterTitleLabel" secondAttribute="bottom" constant="8" id="titleTextFieldTop"/>
-                            <constraint firstItem="titleTextField" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="32" id="titleTextFieldLeading"/>
-                            <constraint firstItem="titleTextField" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" constant="-32" id="titleTextFieldTrailing"/>
-                            <constraint firstItem="titleTextField" firstAttribute="height" constant="44" id="titleTextFieldHeight"/>
-                            <!-- Save Button -->
-                            <constraint firstItem="saveButton" firstAttribute="top" secondItem="titleTextField" secondAttribute="bottom" constant="32" id="saveButtonTop"/>
+                            <constraint firstItem="enterTitleLabel" firstAttribute="top" secondItem="buttonStack" secondAttribute="bottom" constant="32" id="enterTitleLabelTop"/>
+                            <constraint firstItem="lastRecordingButton" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lastRecordingButtonCenterX"/>
+                            <constraint firstItem="lastRecordingButton" firstAttribute="height" constant="48" id="lastRecordingButtonHeight"/>
+                            <constraint firstItem="lastRecordingButton" firstAttribute="top" secondItem="titleLabel" secondAttribute="bottom" constant="32" id="lastRecordingButtonTop"/>
+                            <constraint firstItem="lastRecordingButton" firstAttribute="width" constant="200" id="lastRecordingButtonWidth"/>
                             <constraint firstItem="saveButton" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="saveButtonCenterX"/>
-                            <constraint firstItem="saveButton" firstAttribute="width" constant="220" id="saveButtonWidth"/>
                             <constraint firstItem="saveButton" firstAttribute="height" constant="52" id="saveButtonHeight"/>
-                            <!-- Bottom Navigation Bar -->
-                            <constraint firstItem="bottomNavBar" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-8" id="bottomNavBarBottom"/>
-                            <constraint firstItem="bottomNavBar" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bottomNavBarLeading"/>
-                            <constraint firstItem="bottomNavBar" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="bottomNavBarTrailing"/>
-                            <constraint firstItem="bottomNavBar" firstAttribute="height" constant="60" id="bottomNavBarHeight"/>
+                            <constraint firstItem="saveButton" firstAttribute="top" secondItem="titleTextField" secondAttribute="bottom" constant="32" id="saveButtonTop"/>
+                            <constraint firstItem="saveButton" firstAttribute="width" constant="220" id="saveButtonWidth"/>
+                            <constraint firstItem="titleLabel" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="titleLabelCenterX"/>
+                            <constraint firstItem="titleLabel" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="titleLabelTop"/>
+                            <constraint firstItem="titleTextField" firstAttribute="height" constant="44" id="titleTextFieldHeight"/>
+                            <constraint firstItem="titleTextField" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="32" id="titleTextFieldLeading"/>
+                            <constraint firstItem="titleTextField" firstAttribute="top" secondItem="enterTitleLabel" secondAttribute="bottom" constant="8" id="titleTextFieldTop"/>
+                            <constraint firstItem="titleTextField" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" constant="-32" id="titleTextFieldTrailing"/>
+                            <constraint firstItem="waveformImageView" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="waveformCenterX"/>
+                            <constraint firstItem="waveformImageView" firstAttribute="height" constant="120" id="waveformHeight"/>
+                            <constraint firstItem="waveformImageView" firstAttribute="top" secondItem="lastRecordingButton" secondAttribute="bottom" constant="32" id="waveformTop"/>
+                            <constraint firstItem="waveformImageView" firstAttribute="width" constant="250" id="waveformWidth"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="130.53435114503816" y="-55.633802816901408"/>
         </scene>
     </scenes>
     <resources>
-        <image name="waveform-placeholder" width="250" height="120"/>
-        <image name="home-icon" width="24" height="24"/>
-        <image name="search-icon" width="24" height="24"/>
-        <image name="profile-icon" width="24" height="24"/>
+        <image name="home-icon" width="240" height="262.66665649414062"/>
+        <image name="profile-icon" width="273.33334350585938" height="273.33334350585938"/>
+        <image name="search-icon" width="300" height="300"/>
+        <image name="white-logo" width="163.33332824707031" height="155.33332824707031"/>
     </resources>
 </document>
