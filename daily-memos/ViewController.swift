@@ -117,6 +117,18 @@ class ViewController: UIViewController {
         showAlert(title: "Berhasil", message: "Rekaman disimpan ke Library dengan judul: \(title)")
     }
 
+    @IBAction func homeButtonTapped(_ sender: UIButton) {
+        showAlert(title: "Home", message: "Kamu menekan tombol Home.")
+    }
+
+    @IBAction func searchButtonTapped(_ sender: UIButton) {
+        showAlert(title: "Search", message: "Kamu menekan tombol Search.")
+    }
+
+    @IBAction func profileButtonTapped(_ sender: UIButton) {
+        showAlert(title: "Profile", message: "Kamu menekan tombol Profile.")
+    }
+
     // MARK: - Audio Logic
     func startRecording() {
         let audioFilename = generateFileName()
