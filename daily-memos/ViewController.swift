@@ -32,7 +32,6 @@ class ViewController: UIViewController {
     }
 
     func setupUI() {
-        // Styling sudah diatur di storyboard
         enterTitleLabel.text = "Enter Title"
         titleTextField.placeholder = "Type your title journey"
         waveformImageView.image = UIImage(named: "waveform-placeholder")
@@ -86,6 +85,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func playButtonTapped(_ sender: UIButton) {
+        print("Play button got tapped.")
         guard let url = lastRecordingURL else { return }
         playRecording(url: url)
     }
@@ -118,15 +118,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func homeButtonTapped(_ sender: UIButton) {
-        showAlert(title: "Home", message: "Kamu menekan tombol Home.")
+        showAlert(title: "Home", message: "Home section tapped.")
     }
 
     @IBAction func searchButtonTapped(_ sender: UIButton) {
-        showAlert(title: "Search", message: "Kamu menekan tombol Search.")
+        showAlert(title: "Search", message: "Search section tapped.")
     }
 
     @IBAction func profileButtonTapped(_ sender: UIButton) {
-        showAlert(title: "Profile", message: "Kamu menekan tombol Profile.")
+        showAlert(title: "Profile", message: "Profile section tapped.")
     }
 
     // MARK: - Audio Logic

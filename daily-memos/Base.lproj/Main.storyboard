@@ -13,74 +13,64 @@
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <!-- StackView utama untuk seluruh konten -->
-                            <stackView axis="vertical" alignment="fill" distribution="equalSpacing" spacing="0" translatesAutoresizingMaskIntoConstraints="NO" id="mainStack">
+                            <stackView contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="mainStack">
+                                <rect key="frame" x="24" y="91" width="345" height="643"/>
                                 <subviews>
-                                    <label text="Make Your Journey" textAlignment="center" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="titleLabel">
+                                    <label contentMode="scaleToFill" text="Make Your Journey" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="titleLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="33.666666666666664"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="highlightedColor" red="0.090196087960000004" green="0.14901961389999999" blue="0.24313727020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </label>
-                                    <button contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lastRecordingButton">
-                                        <color key="backgroundColor" red="0.98" green="0.82" blue="0.36" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <button contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lastRecordingButton">
+                                        <rect key="frame" x="0.0" y="33.666666666666671" width="345" height="34"/>
+                                        <color key="backgroundColor" red="0.97999999999999998" green="0.81999999999999995" blue="0.35999999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Last Recording">
                                             <color key="titleColor" red="0.13" green="0.11" blue="0.13" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="waveform-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="waveformImageView"/>
-                                    <stackView axis="horizontal" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="buttonStack">
-                                        <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="playButton">
-                                            <state key="normal" title="Play"/>
-                                            <color key="backgroundColor" red="0.98" green="0.82" blue="0.36" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </button>
-                                        <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="pauseButton">
-                                            <state key="normal" title="Pause"/>
-                                            <color key="backgroundColor" red="0.98" green="0.82" blue="0.36" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </button>
-                                        <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="endButton">
-                                            <state key="normal" title="End"/>
-                                            <color key="backgroundColor" red="0.98" green="0.82" blue="0.36" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="waveform-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="waveformImageView">
+                                        <rect key="frame" x="0.0" y="67.666666666666657" width="345" height="120"/>
+                                    </imageView>
+                                    <stackView contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="buttonStack">
+                                        <rect key="frame" x="0.0" y="187.66666666666669" width="345" height="367.00000000000006"/>
                                     </stackView>
-                                    <label text="Enter Title" textAlignment="left" fontDescription="system 14" textColor="white" translatesAutoresizingMaskIntoConstraints="NO" id="enterTitleLabel"/>
-                                    <textField borderStyle="roundedRect" placeholder="Type your title journey" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="titleTextField">
+                                    <label contentMode="scaleToFill" ambiguous="YES" text="Enter Title" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enterTitleLabel">
+                                        <rect key="frame" x="0.0" y="554.66666666666663" width="345" height="20.333333333333371"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    </label>
+                                    <textField contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your title journey" translatesAutoresizingMaskIntoConstraints="NO" id="titleTextField">
+                                        <rect key="frame" x="0.0" y="575" width="345" height="34"/>
+                                        <color key="textColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" white="0.2" alpha="1" colorSpace="calibratedWhite"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="saveButton">
+                                    <button contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saveButton">
+                                        <rect key="frame" x="0.0" y="609" width="345" height="34"/>
+                                        <color key="backgroundColor" red="0.13" green="0.67000000000000004" blue="0.44" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Save to Library">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <color key="backgroundColor" red="0.13" green="0.67" blue="0.44" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <!-- Bottom Navigation Bar -->
-                            <stackView axis="horizontal" distribution="fillEqually" alignment="center" spacing="0" translatesAutoresizingMaskIntoConstraints="NO" id="bottomNavBar">
-                                <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="homeButton">
-                                    <image key="normal" name="home-icon"/>
-                                </button>
-                                <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="searchButton">
-                                    <image key="normal" name="search-icon"/>
-                                </button>
-                                <button contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="profileButton">
-                                    <image key="normal" name="profile-icon"/>
-                                </button>
+                            <stackView contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bottomNavBar">
+                                <rect key="frame" x="0.0" y="750" width="393" height="60"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.07" green="0.15" blue="0.25" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.070000000000000007" green="0.14999999999999999" blue="0.25" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <!-- Main StackView constraints -->
-                            <constraint firstItem="mainStack" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="mainStackTop"/>
-                            <constraint firstItem="mainStack" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="mainStackLeading"/>
-                            <constraint firstItem="mainStack" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-24" id="mainStackTrailing"/>
-                            <constraint firstItem="mainStack" firstAttribute="bottom" secondItem="bottomNavBar" secondAttribute="top" constant="-16" id="mainStackBottom"/>
-                            <!-- Bottom NavBar constraints -->
                             <constraint firstItem="bottomNavBar" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-8" id="bottomNavBarBottom"/>
+                            <constraint firstItem="bottomNavBar" firstAttribute="height" constant="60" id="bottomNavBarHeight"/>
                             <constraint firstItem="bottomNavBar" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bottomNavBarLeading"/>
                             <constraint firstItem="bottomNavBar" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bottomNavBarTrailing"/>
-                            <constraint firstItem="bottomNavBar" firstAttribute="height" constant="60" id="bottomNavBarHeight"/>
+                            <constraint firstItem="mainStack" firstAttribute="bottom" secondItem="bottomNavBar" secondAttribute="top" constant="-16" id="mainStackBottom"/>
+                            <constraint firstItem="mainStack" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="mainStackLeading"/>
+                            <constraint firstItem="mainStack" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="mainStackTop"/>
+                            <constraint firstItem="mainStack" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-24" id="mainStackTrailing"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -91,8 +81,5 @@
     </scenes>
     <resources>
         <image name="waveform-placeholder" width="250" height="120"/>
-        <image name="home-icon" width="24" height="24"/>
-        <image name="search-icon" width="24" height="24"/>
-        <image name="profile-icon" width="24" height="24"/>
     </resources>
 </document>
